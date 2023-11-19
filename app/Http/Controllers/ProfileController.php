@@ -15,15 +15,15 @@ class ProfileController extends Controller {
             "age"  => $age,
         ];
 
-        setcookie(
-            "access_token",
-            "123-XYZ",
-            1,
-            "/",
-            $_SERVER["SERVER_NAME"],
-            false,
-            true,
-        );
-        return response( $data, 200 );
+        $cname = "access_token";
+        $value = "123-XYZ";
+        $minutes = 1;
+        $path = "/";
+        $domain = $_SERVER["SERVER_NAME"];
+        $secure = false;
+        $httpOnly = true;
+
+        return response( $data )->cookie( $cname, $value, $minutes, $path, $domain, $secure, $httpOnly );
+
     }
 }
